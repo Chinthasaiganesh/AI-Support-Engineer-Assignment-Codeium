@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  resume-parser:
+    build: .
+    container_name: resume-parser
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - resume_uploads:/app/uploads
+      - resume_data:/app/resume_database.db
+    env_file:
+      - .env
+    restart: unless-stopped
+
+volumes:
+  resume_uploads:
+  resume_data:
